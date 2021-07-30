@@ -12,13 +12,13 @@ export default function Header() {
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto">
-              <Nav.Link>
+              {/* <Nav.Link>
                 <Link className="nav-link" to="/">
                   Home
                 </Link>
-              </Nav.Link>
+              </Nav.Link> */}
               <Nav.Link>
-                <Link className="nav-link" to="/product">
+                <Link className="nav-link" to="/products">
                   Product
                 </Link>
               </Nav.Link>

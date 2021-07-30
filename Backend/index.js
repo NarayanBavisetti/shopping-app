@@ -2,8 +2,9 @@ const express = require('express')
 const mongoose = require("mongoose")
 const Product = require("./models/productSchema")
 const app = express();
+require('dotenv').config();
 
-mongoose.connect('mongodb+srv://narayan:ashabala@mern-crud.nmch8.mongodb.net/PROJECT0?retryWrites=true&w=majority',{
+mongoose.connect(process.env.MONGODB_URL,{
     useCreateIndex:true,
     useUnifiedTopology:true,
     useNewUrlParser:true,
@@ -14,11 +15,16 @@ mongoose.connect('mongodb+srv://narayan:ashabala@mern-crud.nmch8.mongodb.net/PRO
 
 const PORT = process.env.PORT || 5000;
 
-app.get("/hi",(req,res) => {
-    res.send("Ji haa");
-})
-app.get("/products",(req,res) => {
-    res.send("Ji haa");
-})
+app.use(express.json())
 
+// const authroute = require("./routes/authRoute")
+// app.use(authroute);
+// app.get("/hi",(req,res) => {
+//     res.send("Ji haa");
+// })
+// app.get("/products",(req,res) => {
+//     res.send("Ji haa");
+// })
+const productRoute = require("./routes/productRoute")
+app.use(productRoute);
 app.listen(PORT, console.log(`PORT is startes at ${PORT}`))
